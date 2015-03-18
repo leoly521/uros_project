@@ -202,7 +202,7 @@ public class UrosTcpClient extends UrosClient {
 	}
 
 	public int getConnectTimeout() {
-		return connectTimeout;
+		return this.connectTimeout;
 	}
 
 	public void setConnectTimeout(int connectTimeout) {
@@ -210,7 +210,7 @@ public class UrosTcpClient extends UrosClient {
 	}
 
 	public int getReadTimeout() {
-		return readTimeout;
+		return this.readTimeout;
 	}
 
 	public void setReadTimeout(int readTimeout) {

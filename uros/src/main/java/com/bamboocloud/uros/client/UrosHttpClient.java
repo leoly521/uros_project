@@ -205,8 +205,8 @@ public class UrosHttpClient extends UrosClient {
 			if (this.sslsf != null)
 				((HttpsURLConnection) conn).setSSLSocketFactory(this.sslsf);
 		}
-		conn.setConnectTimeout(this.connectTimeout);
-		conn.setReadTimeout(this.readTimeout);
+		if (this.connectTimeout > 0) conn.setConnectTimeout(this.connectTimeout);
+		if (this.readTimeout > 0) conn.setReadTimeout(this.readTimeout);
 		conn.setRequestProperty("Cookie", this.cookieManager.getCookie(url.getHost(), url.getFile(), url.getProtocol().equals("https")));
 		if (keepAlive) {
 			conn.setRequestProperty("Keep-Alive", Integer.toString(this.idleTimeout / 1000));
