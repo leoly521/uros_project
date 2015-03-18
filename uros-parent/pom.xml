@@ -32,11 +32,11 @@
 			<url>https://raw.github.com/leoly521/mvn-repo/master</url>
 			<releases>
 				<enabled>true</enabled>
-				<updatePolicy>interval:1</updatePolicy>
+				<updatePolicy>always</updatePolicy>
 			</releases>
 			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>interval:1</updatePolicy>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
 		<repository>
