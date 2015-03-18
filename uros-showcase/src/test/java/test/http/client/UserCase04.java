@@ -9,7 +9,7 @@ public class UserCase04 {
     public static void main(String[] args) throws IOException {
         UrosClassManager.register(User.class, "User");
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         List<User> userList = client.invoke("ex2_getUserList", List.class);
         for (User user : userList) {
             System.out.printf("name: %s, ", user.getName());

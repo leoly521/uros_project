@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class UserCase03 {
     public static void main(String[] args) throws IOException {
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         HashMap map = new HashMap();
         map.put("January", "Jan");
         map.put("February", "Feb");

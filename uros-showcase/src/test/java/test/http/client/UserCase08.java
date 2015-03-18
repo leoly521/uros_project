@@ -8,7 +8,7 @@ public class UserCase08 {
     public static void main(String[] args) throws IOException {
         UrosClassManager.register(User.class, "User");
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         PoJoB b = client.useService(PoJoB.class, "b");
         User[] users1 = b.getUserList();
         for (User user : users1) {

@@ -8,7 +8,7 @@ import java.util.Map;
 public class UserCase07 {
     public static void main(String[] args) throws IOException {
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         PojoA exam = client.useService(PojoA.class, "ex1");
         Map<String, String> map = new HashMap<String, String>();
         map.put("January", "Jan");

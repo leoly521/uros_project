@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class UserCase02 {
     public static void main(String[] args) throws IOException {
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         System.out.println(client.invoke("ex1_sum", new Object[] { new int[] {1,2,3,4,5} }));
         System.out.println(client.invoke("ex1_sum", new Object[] { new short[] {6,7,8,9,10} }));
         System.out.println(client.invoke("ex1_sum", new Object[] { new long[] {11,12,13,14,15} }));

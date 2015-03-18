@@ -29,7 +29,7 @@ public class UserCase10 {
     public static void main(String[] args) throws IOException {
         UrosClassManager.register(User.class, "User");
         UrosHttpClient client = new UrosHttpClient();
-        client.useService("http://localhost:8080/uros/Methods");
+        client.useService("http://localhost:8080/uros-showcase/Methods");
         final ITest test = client.useService(ITest.class, "ex2");
         Map<String, String> map = new HashMap<String, String>();
         map.put("January", "Jan");
