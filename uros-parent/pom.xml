@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>UROS :: Parent</name>
+	<groupId>com.bamboocloud</groupId>
+	<artifactId>uros-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- Project Version & Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+
+		<!-- Dependencies Version Management -->
+		<jdk.version>1.6</jdk.version>
+
+		<log4j.version>1.2.13</log4j.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<logback.version>1.0.11</logback.version>
+
+		<jetty.version>7.6.8.v20121106</jetty.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>offical</id>
+			<name>Maven Official Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>oss.sonatype.org-releases</id>
+			<name>oss.sonatype.org releases Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>repository.springframework.maven.release</id>
+			<name>Spring Framework Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spy</id>
+			<name>Spy Repository</name>
+			<url>http://files.couchbase.com/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>ops4j</id>
+			<name>OPS4J Maven Repository</name>
+			<url>http://repository.ops4j.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>forgerock-staging-repository</id>
+			<name>ForgeRock Release Repository</name>
+			<url>http://maven.forgerock.org/repo/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>offical</id>
+			<name>Maven Official Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>oss.sonatype.org-releases</id>
+			<name>oss.sonatype.org releases Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+		<!-- <pluginRepository> <id>jboss-public-repository-group</id> <name>JBoss 
+			Public Maven Repository Group</name> <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url> 
+			<layout>default</layout> <releases> <enabled>true</enabled> <updatePolicy>never</updatePolicy> 
+			</releases> <snapshots> <enabled>false</enabled> <updatePolicy>never</updatePolicy> 
+			</snapshots> </pluginRepository> -->
+	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Apache Commons BEGIN -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<!-- Apache Commons END -->
+			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.caucho</groupId>
+				<artifactId>hessian</artifactId>
+				<version>4.0.33</version>
+			</dependency>
+
+			<!-- Logging BEGIN -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Compiler plugin: 编译插件, 设定JDK版本 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<debug>true</debug>
+						<optimize>true</optimize>
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+						<fork>true</fork>
+						<compilerArgs>
+							<arg>-Xlint:-options</arg>
+							<arg>-Xlint:unchecked</arg>
+							<arg>-Xlint:deprecation</arg>
+						</compilerArgs>
+						<meminitial>256m</meminitial>
+						<maxmem>1024m</maxmem>
+						<excludes>
+							<exclude>**/package-info.java</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<!-- Resources plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- ensure that only methods available in java 1.6 can be used even 
+						when compiling with java 1.7+ -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>animal-sniffer-maven-plugin</artifactId>
+					<version>1.9</version>
+					<dependencies>
+						<!-- Upgrade ASM and support Java 8 bytecode -->
+						<dependency>
+							<groupId>org.ow2.asm</groupId>
+							<artifactId>asm-all</artifactId>
+							<version>5.0.3</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<signature>
+							<groupId>org.codehaus.mojo.signature</groupId>
+							<artifactId>java16</artifactId>
+							<version>1.0</version>
+						</signature>
+						<ignores>
+							<ignore>sun.misc.Unsafe</ignore>
+							<ignore>sun.misc.Cleaner</ignore>
+							<ignore>sun.nio.ch.DirectBuffer</ignore>
+
+							<ignore>java.util.zip.Deflater</ignore>
+
+							<!-- Used for NIO UDP multicast -->
+							<ignore>java.nio.channels.DatagramChannel</ignore>
+							<ignore>java.nio.channels.MembershipKey</ignore>
+							<ignore>java.net.StandardProtocolFamily</ignore>
+							<ignore>java.nio.channels.spi.SelectorProvider</ignore>
+
+							<!-- Self-signed certificate generation -->
+							<ignore>sun.security.x509.AlgorithmId</ignore>
+							<ignore>sun.security.x509.CertificateAlgorithmId</ignore>
+							<ignore>sun.security.x509.CertificateIssuerName</ignore>
+							<ignore>sun.security.x509.CertificateSerialNumber</ignore>
+							<ignore>sun.security.x509.CertificateSubjectName</ignore>
+							<ignore>sun.security.x509.CertificateValidity</ignore>
+							<ignore>sun.security.x509.CertificateVersion</ignore>
+							<ignore>sun.security.x509.CertificateX509Key</ignore>
+							<ignore>sun.security.x509.X500Name</ignore>
+							<ignore>sun.security.x509.X509CertInfo</ignore>
+							<ignore>sun.security.x509.X509CertImpl</ignore>
+
+							<!-- SSLSession implelementation -->
+							<ignore>javax.net.ssl.SSLEngine</ignore>
+						</ignores>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Test plugin: 仅测试名称为*Test的类, 使用支持分组测试的surefire-junit47 driver -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+					<configuration>
+						<argLine>-Xmx256M</argLine>
+						<includes>
+							<include>**/*Test*.java</include>
+						</includes>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit47</artifactId>
+							<version>2.12.4</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!-- Eclipse plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<wtpversion>2.0</wtpversion>
+						<sourceExcludes>
+							<sourceExclude>**/.svn/</sourceExclude>
+						</sourceExcludes>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+						<additionalConfig>
+							<file>
+								<name>.settings/org.eclipse.core.resources.prefs</name>
+								<content>
+									<![CDATA[encoding/<project>=${project.build.sourceEncoding}]]>
+								</content>
+							</file>
+						</additionalConfig>
+						<additionalProjectnatures>
+							<!-- <projectnature>org.eclipse.jdt.core.javanature</projectnature> -->
+							<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+							<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						</additionalProjectnatures>
+						<additionalBuildcommands>
+							<!-- <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand> -->
+							<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
+							<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						</additionalBuildcommands>
+					</configuration>
+				</plugin>
+				<!-- WAR plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<warName>${project.artifactId}</warName>
+						<packagingExcludes>**/*.svn</packagingExcludes>
+						<warSourceExcludes>**/*.svn</warSourceExcludes>
+					</configuration>
+				</plugin>
+				<!-- JAR plugin: Jar打包相关插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<!-- Source plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Javadoc plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<aggregate>true</aggregate>
+						<charset>${project.reporting.outputEncoding}</charset>
+						<encoding>${project.reporting.outputEncoding}</encoding>
+						<docencoding>${project.reporting.outputEncoding}</docencoding>
+					</configuration>
+					<!-- <executions> <execution> <id>attach-javadocs</id> <goals> <goal>jar</goal> 
+						</goals> </execution> </executions> -->
+				</plugin>
+				<!-- Dependencies -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.6</version>
+					<!-- <executions> <execution> <id>copy-dependencies</id> <phase>package</phase> 
+						<goals> <goal>copy-dependencies</goal> </goals> <configuration> <outputDirectory>${project.build.directory}/lib</outputDirectory> 
+						<useRepositoryLayout>false</useRepositoryLayout> </configuration> </execution> 
+						</executions> -->
+				</plugin>
+				<!-- Antrun plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+				<!-- Cobertura plugin: 测试覆盖率统计插件 -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<!-- Clean plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<!-- Install plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<!-- Deploy plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<altDeploymentRepository>internal.repo::default::file://${basedir}/mvn-repo</altDeploymentRepository>
+					</configuration>
+				</plugin>
+				<!-- Version plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.0</version>
+				</plugin>
+				<!-- Release plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+				<!-- SCM plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
+				<!-- Site plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<configuration>
+						<outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+					</configuration>
+					<version>3.0</version>
+				</plugin>
+				<!-- Jetty plugin -->
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+						<scanIntervalSeconds>5</scanIntervalSeconds>
+					</configuration>
+				</plugin>
+				<!-- Build Helper plugin: 增加更多的Source和Test Source目录插件 -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+				<!-- Enforcer plugin: 避免被依赖的依赖引入过期的jar包 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.2</version>
+					<executions>
+						<execution>
+							<id>enforce-banned-dependencies</id>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+							<configuration>
+								<rules>
+									<requireMavenVersion>
+										<version>3.0.3</version>
+									</requireMavenVersion>
+									<requireJavaVersion>
+										<version>1.6</version>
+									</requireJavaVersion>
+									<bannedDependencies>
+										<searchTransitive>true</searchTransitive>
+										<excludes>
+											<exclude>commons-logging</exclude>
+											<exclude>aspectj:aspectj*</exclude>
+											<exclude>org.springframework:2.*</exclude>
+											<exclude>org.springframework:3.0.*</exclude>
+										</excludes>
+									</bannedDependencies>
+								</rules>
+								<fail>true</fail>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Assembly plugin: 实现自定义打包 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<!-- Execute java 插件 -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.2.1</version>
+				</plugin>
+				<!-- To compress (Minify + Ofuscate) Javascript files and CSS files (using 
+					YUI Compressor from Julien Lecomte) and/or to check Javascript files with 
+					jslint. -->
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>yuicompressor-maven-plugin</artifactId>
+					<version>1.4.0</version>
+				</plugin>
+				<!-- Converts files with characters in any supported character encoding 
+					to one with ASCII and/or Unicode escapes. -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>native2ascii-maven-plugin</artifactId>
+					<version>1.0-beta-1</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.alchim31.maven</groupId>
+										<artifactId>yuicompressor-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>compress</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<id>maven.net.cn</id>
+					<name>maven.net.cn</name>
+					<url>http://maven.net.cn/content/groups/public/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>offical</id>
+					<name>Maven Official Repository</name>
+					<url>http://repo1.maven.org/maven2</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<!-- <repository> <id>jboss</id> <name>Jboss Repository</name> <url>http://repository.jboss.com/maven2</url> 
+					<snapshots> <enabled>false</enabled> </snapshots> </repository> <repository> 
+					<id>jboss https</id> <name>Jboss Repository</name> <url>https://repository.jboss.org/nexus/content/repositories/public</url> 
+					<snapshots> <enabled>false</enabled> </snapshots> </repository> -->
+				<repository>
+					<id>mirrors.ibiblio.org</id>
+					<name>mirrors.ibiblio.org</name>
+					<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>java.net</id>
+					<name>Java.net Repository</name>
+					<url>http://download.java.net/maven/2/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>springsource</id>
+					<name>SpringSource Repository</name>
+					<url>http://repository.springsource.com/maven/bundles/release</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>test</value>
+				</property>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>prod</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>prod</value>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
+</project>
