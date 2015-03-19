@@ -1,6 +1,7 @@
 package test.databind.ser;
 
 import java.nio.charset.Charset;
+import java.util.Map;
 
 import com.bamboocloud.uros.io.ByteBufferStream;
 import com.bamboocloud.uros.io.UrosFormatter;
